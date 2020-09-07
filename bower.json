@@ -1,0 +1,20 @@
+{
+  "name": "php_oe28_vocabulary",
+  "description": "",
+  "main": "",
+  "authors": [
+    "kiennt175 <kiennt175@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kiennt175/php_oe28_vocabulary",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "etrain-template": "git@github.com:kiennt175/etrain-template.git"
+  }
+}
