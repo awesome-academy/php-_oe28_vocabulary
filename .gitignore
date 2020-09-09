@@ -12,3 +12,5 @@ npm-debug.log
 yarn-error.log
 /public/bower_components/*
 .DS_Store
+/public/js
+/public/css
