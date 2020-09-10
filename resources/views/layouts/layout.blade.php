@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Etrain</title>
+    <title>{{ trans('home.etrain') }}</title>
     <link rel="icon" href="{{ asset('bower_components/etrain-template/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/etrain-template/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/etrain-template/css/animate.css') }}">
@@ -32,7 +32,7 @@
                                     <a class="nav-link" href="">{{ trans('home.home') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">{{ trans('home.words') }}</a>
+                                    <a class="nav-link" href="{{ route('home') }}">{{ trans('home.words') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="">{{ trans('home.tests') }}</a>
@@ -46,15 +46,32 @@
                                         <a class="dropdown-item" href="">{{ trans('home.en') }}</a>
                                     </div>
                                 </li>
+                                @guest
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ trans('auth.login') }}</a>
+                                </li>
+                                @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ trans('auth.register') }}</a>
+                                </li>
+                                @endif
+                                @else
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ trans('home.settings') }}
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="">{{ trans('home.profile') }}</a>
-                                        <a class="dropdown-item" href="">{{ trans('home.logout') }}</a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item logout" href="{{ route('logout') }}">
+                                            {{ trans('auth.logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </li>
+                                @endguest
                             </ul>
                         </div>
                     </nav>
@@ -123,6 +140,7 @@
     <script src="{{ asset('bower_components/etrain-template/js/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('bower_components/etrain-template/js/waypoints.min.js') }}"></script>
     <script src="{{ asset('bower_components/etrain-template/js/custom.js') }}"></script>
+    <script src="{{ asset('js/logout.js') }}"></script>
 </body>
 
 </html>
