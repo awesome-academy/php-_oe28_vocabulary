@@ -1,8 +1,11 @@
-// Fonts
+// // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
+// // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.editor {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

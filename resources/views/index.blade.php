@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-lg-4 col-xl-2 col-sm-4">
                                 <div class="testimonial_slider_img">
-                                    <img src="{{ asset('bower_components/etrain-template/img/testimonial_img_1.png') }}" alt="#">
+                                    <img src="{{ Config::get('photo.dev1') }}" alt="#">
                                 </div>
                             </div>
                             <div class="col-xl-4 d-none d-xl-block">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="col-xl-2 d-none d-xl-block">
                                 <div class="testimonial_slider_img">
-                                    <img src="{{ asset('bower_components/etrain-template/img/testimonial_img_1.png') }}" alt="#">
+                                    <img src="{{ Config::get('photo.dev1') }}" alt="#">
                                 </div>
                             </div>
                         </div>
