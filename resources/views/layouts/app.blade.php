@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ trans('home.etrain') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bower_components/etrain_template/css/bootstrap.min.css') }}">
 </head>
 <body>
     <div id="app">
@@ -31,7 +31,6 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item logout" href="{{ route('logout') }}">
                                         {{ trans('auth.logout') }}

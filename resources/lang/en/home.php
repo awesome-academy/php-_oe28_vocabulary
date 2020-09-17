@@ -22,7 +22,6 @@ return [
     'number' => '+2 36 265 (8060)',
     'email_title' => 'Email :',
     'email' => 'info@colorlib.com',
-
     'every' => 'Every child yearns to learn',
     'making' => 'Making Your Childs World Better',
     'rep' => 'Replenish seasons may male hath fruit beast were seas saw you arrie said man beast whales

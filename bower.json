@@ -15,6 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "etrain-template": "git@github.com:kiennt175/etrain-template.git"
+    "etrain_template": "git@github.com:kiennt175/etrain_template.git"
   }
 }

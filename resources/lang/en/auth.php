@@ -3,7 +3,6 @@
 return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
     'login' => "Login",
     'remember' => "Remember Me",
     'register' => "Register",
@@ -14,7 +13,6 @@ return [
     'receive_email' => "If you did not receive the email",
     'request_another' => "click here to request another",
     'logout' => "Logout",
-
     'reset' => 'Your password has been reset!',
     'sent' => 'We have emailed your password reset link!',
     'throttled' => 'Please wait before retrying.',
