@@ -1,5 +1,6 @@
 <?php 
 
 return [
-    'dev1' => asset('images/dev1.png'),
+    'dev1' => 'images/dev1.png',
+    
 ];

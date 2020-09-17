@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
+    "components-font-awesome": "^5.14.0",
     "etrain_template": "git@github.com:kiennt175/etrain_template.git"
   }
 }
