@@ -1,6 +1,4 @@
-$(document).ready(function(){
-    $('.logout').click(function() {
-        event.preventDefault();
-        $('#logout-form').submit();
-    });
+$('.logout').click(function() {
+    event.preventDefault();
+    $('#logout-form').submit();
 });
