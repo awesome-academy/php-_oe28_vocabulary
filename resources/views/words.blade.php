@@ -62,7 +62,7 @@
             <div class="card-header">{{ trans('words.repo') }}</div>
             <div class="card-body">
                 <div class="container">
-                    <table id="example" class="table">
+                    <table id="words-table" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">{{ trans('words.word') }}</th>

@@ -1,5 +1,12 @@
 {
-    "/js/app.js": "/js/app.js",
+    "/js/add_input.js": "/js/add_input.js",
+    "/css/_variables.css": "/css/_variables.css",
     "/css/app.css": "/css/app.css",
-    "/js/logout.js": "/js/logout.js"
+    "/js/app.js": "/js/app.js",
+    "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/countdown.js": "/js/countdown.js",
+    "/js/datatables.js": "/js/datatables.js",
+    "/js/logout.js": "/js/logout.js",
+    "/js/read.js": "/js/read.js",
+    "/js/speech.js": "/js/speech.js"
 }
