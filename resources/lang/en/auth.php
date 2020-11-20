@@ -25,4 +25,8 @@ return [
     'reset_label' => "Reset Password",
     'email_label' => "E-Mail Address",
     'send_label' => "Send Password Reset Link",
+    'or_login' => "Or Login With",
+    'github' => 'Github',
+    'facebook' => 'Facebook',
+    'google' => 'Google',
 ];

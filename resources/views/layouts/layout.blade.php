@@ -68,11 +68,11 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" 
-                                        href="">
+                                        href="{{ route('user.change-language', ['vi']) }}">
                                             {{ trans('home.vi') }}
                                         </a>
                                         <a class="dropdown-item" 
-                                        href="">
+                                        href="{{ route('user.change-language', ['en']) }}">
                                             {{ trans('home.en') }}
                                         </a>
                                     </div>
