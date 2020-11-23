@@ -13,5 +13,7 @@ Route::group(['middleware' => 'locale'], function() {
             'update',
         ]);
         Route::resource('words', 'WordController');
+        Route::delete('words/delete/{wordId}/{typeId}', 'WordController@delete')->name('deleteWord');
+        Route::get('words/fix/{wordId}/{typeId}', 'WordController@fix')->name('editWord');
     });
 });
