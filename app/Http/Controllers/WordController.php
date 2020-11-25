@@ -21,7 +21,7 @@ class WordController extends Controller
         $userId = Auth::id();
         $user = User::findOrFail($userId);
         $words = $user->words()->with('types')->get();
-
+        
         return view('words', compact('words'));
     }
 
@@ -99,7 +99,7 @@ class WordController extends Controller
             $types = $word->types()->get()->toArray();
             $totalRecords = count($types);
             $word->types()->wherePivot('type_id', $typeId)->detach();
-            if ($totalRecords === config("config.the_other_records")) {
+            if ($totalRecords == config("config.the_other_records")) {
                 $word->delete();
             }
         } catch (Exception $e) {
