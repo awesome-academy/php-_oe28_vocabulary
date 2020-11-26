@@ -18,4 +18,9 @@ return [
     '6' => 'Determiner',
     '7' => 'Preposition',
     '8' => 'Conjunction',
+    'number_of_records_in_export_file' => 1000,
+    'export_file_name' => 'formatForImport.xlsx',
+    'start_row' => 2,
+    'export_template' => '/Template.xlsx',
+    'types_array' => [1, 2, 3, 4, 5, 6, 7, 8]
 ];

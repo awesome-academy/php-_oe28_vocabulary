@@ -32,11 +32,11 @@
             <div class="card-header">{{ trans('words.import_label') }}</div>
             <div class="card-body ">
                 <div class="col">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('importWord') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="import" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
                         <input type="submit" value="{{ trans('words.import') }}">
-                        <a href="" class="genric-btn info radius add-word">
+                        <a href="{{ route('exportWord') }}" class="genric-btn info radius add-word">
                             {{ trans('words.export') }}
                         </a>
                     </form>
