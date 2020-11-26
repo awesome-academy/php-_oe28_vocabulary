@@ -53,7 +53,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="">
-                                            {{ trans('home.your_tests') }}
+                                            {{ trans('home.create_test') }}
                                         </a>
                                         <a class="dropdown-item" href="">
                                             {{ trans('home.history') }}

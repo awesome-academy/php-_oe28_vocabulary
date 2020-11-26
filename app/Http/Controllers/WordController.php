@@ -125,6 +125,6 @@ class WordController extends Controller
         }
         $allTypes = $word->types()->get()->toArray();
         
-        return view('edit_word', compact(['word', 'meaning', 'type', 'allTypes', 'check_word']));
+        return view('edit_word', compact(['word', 'meaning', 'type', 'allTypes', 'checkWord']));
     }
 }

@@ -26,9 +26,7 @@
                                     {{ trans('auth.email_label') }}
                                 </label>
                                 <div class="col-md-6">
-                                    <input id="email" type="email" 
-                                    class="form-control @error('email') is-invalid @enderror" name="email" 
-                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -41,9 +39,7 @@
                                     {{ trans('auth.password_label') }}
                                 </label>
                                 <div class="col-md-6">
-                                    <input id="password" type="password" 
-                                    class="form-control @error('password') is-invalid @enderror" 
-                                    name="password" required autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -54,8 +50,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" 
-                                        id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember">
                                         <label class="form-check-label" for="remember">
                                             {{ trans('auth.remember') }}
                                         </label>
@@ -87,18 +82,18 @@
                                 <div class="col-md-8 offset-md-4">
                                     <div class="row">
                                         <div class="col-3">
-                                            <label for="">{{ trans('auth.github') }}</label>
-                                            <a href="">
+                                            <label for="">Github</label>
+                                            <a href="{{ route('redirectToProvider', 'github') }}">
                                                 <i class="fab fa-github myicon"></i>
                                             </a>
                                         </div>
                                         <div class="col-3">
-                                            <label for="">{{ trans('auth.google') }}</label>
+                                            <label for="">Google</label>
                                             <i class="fab fa-google myicon icongg"></i>
                                         </div> 
                                         <div class="col-3">
-                                            <label for="">{{ trans('auth.facebook') }}</label>
-                                            <a href="">
+                                            <label for="">Facebook</label>
+                                            <a href="{{ route('redirectToProvider', 'facebook') }}">
                                                 <i class="fab fa-facebook myicon iconfb"></i>
                                             </a>
                                         </div>
