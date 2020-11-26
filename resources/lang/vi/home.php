@@ -5,7 +5,7 @@ return [
     'home' => 'Trang chủ',
     'words' => 'Từ vựng',
     'tests' => 'Kiểm tra',
-    'your_tests' => 'Bài kiểm tra của bạn',
+    'create_test' => 'Tạo bài kiểm tra',
     'history' => 'Lịch sử',
     'vers' => 'Ngôn ngữ',
     'vi' => 'Tiếng Việt',

@@ -5,6 +5,8 @@ return [
     'home' => 'Home',
     'words' => 'Words',
     'tests' => 'Tests',
+    'create_test' => 'Create a test',
+    'history' => 'History',
     'vers' => 'Versions',
     'vi' => 'Vietnamese',
     'en' => 'English',
