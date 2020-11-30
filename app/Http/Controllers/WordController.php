@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Models\Test;
 use App\Models\User;
 use App\Models\Word;
-use App\Imports\ImportWords; 
+use App\Imports\WordsImport; 
 use App\Exports\WordsExport; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -126,5 +125,17 @@ class WordController extends Controller
         $allTypes = $word->types()->get()->toArray();
         
         return view('edit_word', compact(['word', 'meaning', 'type', 'allTypes', 'checkWord']));
+    }
+
+    public function import(Request $request)
+    {    
+        Excel::import(new WordsImport, $request->file('import'));
+
+        return back();
+    }
+
+    public function export() 
+    {
+       return Excel::download(new WordsExport, config("config.export_file_name"));
     }
 }
