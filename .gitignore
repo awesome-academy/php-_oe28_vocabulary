@@ -15,3 +15,5 @@ yarn-error.log
 /public/js
 /public/css
 .vscode
+/stubs
+/storage/framework/laravel-excel
