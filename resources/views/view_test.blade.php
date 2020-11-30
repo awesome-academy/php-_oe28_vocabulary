@@ -79,7 +79,7 @@
                                         <div class="mb-6 text-center">
                                             <div id="otp" class="flex justify-center ">
                                                 @for ($index = 0; $index < strlen($word['word']); $index++) 
-                                                    <input name="answers[{{ $key }}][{{ $index }}]" class="input-otp m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline " type="text" maxlength="1" tabindex="{{ $index + 1 }}">
+                                                    <input name="answers[{{ $key }}][{{ $index }}]" class="input-otp m-2 text-center form-control form-control-solid rounded focus:border-blue-400 focus:shadow-outline" type="text" maxlength="1" tabindex="{{ $index + 1 }}">
                                                 @endfor
                                             </div>
                                         </div>
