@@ -52,10 +52,10 @@
                                         {{ trans('home.tests') }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{ route('tests.create') }}">
                                             {{ trans('home.create_test') }}
                                         </a>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{ route('tests.index') }}">
                                             {{ trans('home.history') }}
                                         </a>
                                     </div>
