@@ -36,7 +36,7 @@ class WordRepository extends BaseRepository implements WordRepositoryInterface
     public function detachTypeWordTable($id, $typeId)
     {
         $word = parent::find($id);
-
+        
         return $this->getTypesByTheWord($word)->wherePivot('type_id', $typeId)->detach();
     }
 
