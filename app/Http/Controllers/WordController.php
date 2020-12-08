@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Models\User;
-use App\Models\Word;
 use App\Imports\WordsImport; 
 use App\Exports\WordsExport; 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Config;
+use App\Repositories\Word\WordRepositoryInterface;
 
 class WordController extends Controller
 {
+    protected $wordRepo;
+
+    public function __construct(WordRepositoryInterface $wordRepo)
+    {
+        $this->wordRepo = $wordRepo;
+    }
+
     public function index()
     {
-        $userId = Auth::id();
-        $user = User::findOrFail($userId);
-        $words = $user->words()->with('types')->get();
+        $words = $this->wordRepo->getAllWordsWith('types');
         
         return view('words', compact('words'));
     }
@@ -31,13 +33,11 @@ class WordController extends Controller
 
     public function store(Request $request)
     {
-        $userId = Auth::id();
         if (count(array_unique($request->types)) != count($request->types)) {
             return back()->with('message', trans('words.err_types'));
         }
         try {
-            $user = User::find($userId);
-            $word = $user->words()->create([
+            $word = $this->wordRepo->createWord([
                 'word' => trim($request->word),
                 'note' => trim($request->note),
             ]);
@@ -49,7 +49,7 @@ class WordController extends Controller
                 }
                 else $typeId = config("config_vi.$type");
                 $meaning = trim($request->meanings[$i]);
-                $word->types()->attach($typeId, ['meaning' => $meaning]);
+                $this->wordRepo->attachTypeWordTable($word, $typeId, ['meaning' => $meaning]);
             }
         } catch (Exception $e) {
             return back()->with('message', trans('words.add_failed'));
@@ -61,20 +61,18 @@ class WordController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $word = Word::find($id);
-            $word->update([
+            $word = $this->wordRepo->update($id, [
                 'note' => trim($request->note),
                 'word' => trim($request->word),
             ]);
             if (Config::get('app.locale') == 'en') {
                 $newTypeId = config("config.$request->type");
                 $oldTypeId = config("config.$request->oldTypeId");
-            }
-            else {
+            } else {
                 $newTypeId = config("config_vi.$request->type");
                 $oldTypeId = config("config_vi.$request->oldTypeId");
             };
-            $word->types()->wherePivot('type_id', $oldTypeId)->updateExistingPivot($oldTypeId, [
+            $this->wordRepo->updateTypeWordTable($word, $oldTypeId, [
                 'type_id' => $newTypeId, 
                 'meaning' => trim($request->meaning),
             ]);
@@ -87,19 +85,15 @@ class WordController extends Controller
 
     public function delete($wordId, $typeId)
     {
-        $checkWord = DB::table('test_word')->where([
-            ['word_id', '=', $wordId],
-            ['type_id', '=', $typeId],
-        ])->get()->isNotEmpty();
+        $checkWord = $this->wordRepo->checkTheWord($wordId, $typeId);
         if ($checkWord) 
             return back()->with('message', trans('words.check_word'));
         try {
-            $word = Word::find($wordId);
-            $types = $word->types()->get()->toArray();
+            $types = $this->wordRepo->getAWordWithTypes($wordId);
             $totalRecords = count($types);
-            $word->types()->wherePivot('type_id', $typeId)->detach();
+            $this->wordRepo->detachTypeWordTable($wordId, $typeId);
             if ($totalRecords == config("config.the_other_records")) {
-                $word->delete();
+                $this->wordRepo->delete($wordId);
             }
         } catch (Exception $e) {
             return redirect()->route('words.index')->with('message', trans('words.delete_failed'));
@@ -110,19 +104,16 @@ class WordController extends Controller
 
     public function fix($wordId, $typeId)
     {
-        $checkWord = DB::table('test_word')->where([
-            ['word_id', '=', $wordId],
-            ['type_id', '=', $typeId],
-        ])->get()->isNotEmpty();
-        $word = Word::findOrFail($wordId);
-        $meaning = $word->types()->find($typeId)->pivot->meaning;
+        $checkWord = $this->wordRepo->checkTheWord($wordId, $typeId);
+        $word = $this->wordRepo->find($wordId);
+        $meaning = $this->wordRepo->getMeaningOfAWord($word, $typeId);
         if (Config::get('app.locale') == 'en') {
             $type = config("config.$typeId");
         }
         else {
             $type = config("config_vi.$typeId");
         }
-        $allTypes = $word->types()->get()->toArray();
+        $allTypes = $this->wordRepo->getAWordWithTypes($word);
         
         return view('edit_word', compact(['word', 'meaning', 'type', 'allTypes', 'checkWord']));
     }
