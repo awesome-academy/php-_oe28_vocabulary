@@ -22,5 +22,6 @@ return [
     'export_file_name' => 'formatForImport.xlsx',
     'start_row' => 2,
     'export_template' => '/Template.xlsx',
-    'types_array' => [1, 2, 3, 4, 5, 6, 7, 8]
+    'types_array' => [1, 2, 3, 4, 5, 6, 7, 8],
+    'timeout' => 5,
 ];

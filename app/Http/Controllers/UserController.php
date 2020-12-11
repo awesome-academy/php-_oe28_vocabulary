@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+use App\Repositories\User\UserRepositoryInterface;
 
 class UserController extends Controller
 {
+    protected $userRepo;
+
+    public function __construct(UserRepositoryInterface $userRepo)
+    {
+        $this->userRepo = $userRepo;
+    }
+
     public function index()
     {
         //
@@ -30,7 +38,7 @@ class UserController extends Controller
 
     public function edit($id)
     {   
-        $user = User::findOrFail($id);
+        $user = Auth::user();
         
         return view('profile', compact('user'));
     }
@@ -38,8 +46,8 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {   
         try {
-            $user = User::findOrFail($id);
-            $user->update([
+            $userId = Auth::id();
+            $this->userRepo->update($userId, [
                 'name' => $request->name,
             ]);
         } catch (Exception $e) {
