@@ -24,14 +24,14 @@ class UserTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
         $this->user = new User();
+        parent::setUp();
     }
 
     protected function tearDown(): void
     {
-        parent::tearDown();
         unset($this->user);
+        parent::tearDown();
     }
 
     public function testFillable()

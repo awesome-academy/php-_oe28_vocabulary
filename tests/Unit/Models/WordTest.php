@@ -19,14 +19,14 @@ class WordTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
         $this->word = new Word();
+        parent::setUp();
     }
 
     protected function tearDown(): void
     {
-        parent::tearDown();
         unset($this->word);
+        parent::tearDown();
     }
 
     public function testFillable()
@@ -51,7 +51,7 @@ class WordTest extends TestCase
 
     public function testTheMutator()
     {
-        $word = factory(Word::class)->make(['word' => 'test']);
+        $word = factory(Word::class)->make();
 
         $this->assertEquals('TEST', $word->word);
     }

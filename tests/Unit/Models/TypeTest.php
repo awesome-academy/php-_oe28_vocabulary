@@ -12,14 +12,14 @@ class TypeTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
         $this->type = new Type();
+        parent::setUp();
     }
 
     protected function tearDown(): void
     {
-        parent::tearDown();
         unset($this->type);
+        parent::tearDown();
     }
 
     public function testWordRelation()
