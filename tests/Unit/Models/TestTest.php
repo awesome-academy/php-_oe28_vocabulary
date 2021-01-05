@@ -21,14 +21,14 @@ class TestTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
         $this->test = new Test();
+        parent::setUp();
     }
 
     protected function tearDown(): void
     {
-        parent::tearDown();
         unset($this->test);
+        parent::tearDown();
     }
 
     public function testFillable()
