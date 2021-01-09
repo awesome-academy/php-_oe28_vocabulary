@@ -38,8 +38,8 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
-        $level = $request->level;
-        foreach ($request->dates as $key => $date) {
+        $data = $request->all();
+        foreach ($data['dates'] as $key => $date) {
             if (app()->getLocale() == 'en') {
                 $dates[$key] = date('Y-m-d', strtotime($date));
             } 
@@ -47,7 +47,7 @@ class TestController extends Controller
                 $dates[$key] = date('Y-m-d', strtotime(str_replace('/', '-', $date)));
             }
         }
-        foreach ($request->types as $key => $type) {
+        foreach ($data['types'] as $key => $type) {
             if (app()->getLocale() == 'en') {
                 $types[$key] = config("config.$type");
             }
@@ -55,21 +55,21 @@ class TestController extends Controller
                 $types[$key] = config("config_vi.$type");  
             }
         }
-        $words = $this->testRepo->createWordsForATest($types, $dates, $request->total);
-        $timeout = Carbon::parse(now());
+        $words = $this->testRepo->createWordsForATest($types, $dates, $data['total']);
+        $timeout = Carbon::parse(now());    
         $timeout->addMinutes(config("config.timeout"));
-        $test = $this->testRepo->createATest($level, $request->test, count($words), $timeout);
+        $test = $this->testRepo->createATest($data['level'], $data['test'], count($words), $timeout);
         foreach ($words as $word) {
             $this->testRepo->attachAWordToTestWordTable($test, $word);
         }
-
+    
         return redirect()->route('tests.show', $test->id);
     }
 
     public function show(Request $request, $id)
     {
         $test = $this->testRepo->getATestWith($id, 'words.types');
-
+        
         return view('view_test', compact('test'));
     }
 
@@ -82,19 +82,16 @@ class TestController extends Controller
 
     public function update(Request $request, $id)
     {
-        $answers = $request->answers;
-        $key = $request->keys;
-        $typeIds = $request->typeIds;
-        $wordIds = $request->wordIds;
+        $data = $request->all();
         $score = 0;
-        foreach ($answers as $index => $answer) {
+        foreach ($data['answers'] as $index => $answer) {
             $result = '';
             foreach ($answer as $character) {
                 $result .= $character;
             } 
-            $isTrue = (int)($key[$index] == $result);
+            $isTrue = (int)($data['keys'][$index] == $result);
             if ($isTrue) $score++;
-            $this->testRepo->updateAnswersForATest($id, $typeIds[$index], $wordIds[$index], [
+            $this->testRepo->updateAnswersForATest($id, $data['typeIds'][$index], $data['wordIds'][$index], [
                 'answer' => $result,
                 'is_true' => $isTrue,
             ]);
