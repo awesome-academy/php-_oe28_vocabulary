@@ -6,6 +6,21 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner text-center">
                         <div class="breadcrumb_iner_item">
+                            @if (session('status'))
+                                <div class="mail-notify" aria-live="polite" aria-atomic="true">
+                                    <div class="toast">
+                                        <div class="toast-header">
+                                            <strong class="mr-auto">{{ trans('mail.reset') }}</strong>
+                                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ trans('mail.successfully') }}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <h2>{{ trans('auth.login') }}</h2>
                         </div>
                     </div>
@@ -16,6 +31,11 @@
     <div class="container balance">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if (session('message'))
+                    <div class="alert alert-success" role="alert">
+                        {{ trans('mail.reset_pwd_successfully') }}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">{{ trans('auth.login') }}</div>
                     <div class="card-body">
@@ -107,3 +127,8 @@
         </div>
     </div>
 @endsection
+@if (session('status'))
+    @section('script')
+        <script src="{{ asset('js/mail_notify.js') }}"></script>
+    @endsection
+@endif

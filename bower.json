@@ -19,6 +19,7 @@
     "datatables-rowsgroup": "git@github.com:kiennt175/datatables-rowsgroup.git",
     "etrain-datatables": "git@github.com:kiennt175/etrain-datatables.git",
     "multiple-selecting": "git@github.com:kiennt175/multiple-selecting.git",
-    "otp-inputs": "git@github.com:kiennt175/otp-inputs.git"
+    "otp-inputs": "git@github.com:kiennt175/otp-inputs.git",
+    "etrain-mail": "git@github.com:kiennt175/etrain-mail.git"
   }
 }
