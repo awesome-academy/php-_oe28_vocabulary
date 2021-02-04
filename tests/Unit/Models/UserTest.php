@@ -15,6 +15,7 @@ class UserTest extends TestCase
         'name', 
         'email', 
         'password',
+        'reset_pwd_token'
     ];
 
     protected $hidden = [
