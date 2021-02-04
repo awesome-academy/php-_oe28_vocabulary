@@ -89,7 +89,8 @@ class WordController extends Controller
         if ($checkWord) 
             return back()->with('message', trans('words.check_word'));
         try {
-            $types = $this->wordRepo->getAWordWithTypes($wordId);
+            $word = $this->wordRepo->find($wordId);
+            $types = $this->wordRepo->getAWordWithTypes($word);
             $totalRecords = count($types);
             $this->wordRepo->detachTypeWordTable($wordId, $typeId);
             if ($totalRecords == config("config.the_other_records")) {

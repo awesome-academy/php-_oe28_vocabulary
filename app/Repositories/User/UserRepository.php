@@ -11,4 +11,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         return User::class;
     }
+
+    public function findUser($field, $data)
+    {
+        return $this->model->where($field, $data)->firstOrFail();
+    }
 }

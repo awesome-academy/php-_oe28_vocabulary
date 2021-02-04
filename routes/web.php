@@ -21,4 +21,7 @@ Route::group(['middleware' => 'locale'], function() {
     });
     Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider')->name('redirectToProvider');
     Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::post('reset-password-link', 'HomeController@sendResetPasswordLink')->name('resetPasswordLink');
+    Route::get('new-password/{userId}/{token}', 'HomeController@newPassword')->name('newPassword')->middleware('reset-pwd');
+    Route::post('reset-password/{userId}', 'HomeController@resetPassword')->name('resetPassword');
 });
