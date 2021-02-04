@@ -109,13 +109,11 @@
             <tr>
                 <td>
                     <div class="block-grid col num12">
-                        <table cellpadding="0" cellspacing="0" class="divider" role="presentation" valign="top"
-                            width="100%">
+                        <table cellpadding="0" cellspacing="0" class="divider" role="presentation" valign="top" width="100%">
                             <tbody>
                                 <tr valign="top">
                                     <td class="divider_inner" valign="top">
-                                        <table cellpadding="0" cellspacing="0" class="divider_content"
-                                            role="presentation" valign="top" width="100%">
+                                        <table cellpadding="0" cellspacing="0" class="divider_content" role="presentation" valign="top" width="100%">
                                             <tbody>
                                                 <tr valign="top">
                                                     <td valign="top"><span></span></td>
@@ -147,7 +145,7 @@
                         <div class="col num12">
                             <div align="center" class="button-container">
                                 <a class="new-password" href="{{ route('newPassword', ['userId' => $data['userId'], 'token' => $data['token']]) }}" target="_blank">
-                                    <span class="button">{{ trans('mail.new') }}</span>
+                                    <span class="button">{{ trans('mail.new_pwd') }}</span>
                                 </a>
                             </div>
                         </div>

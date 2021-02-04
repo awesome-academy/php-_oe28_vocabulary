@@ -7,6 +7,7 @@
     "/js/countdown.js": "/js/countdown.js",
     "/js/datatables.js": "/js/datatables.js",
     "/js/logout.js": "/js/logout.js",
+    "/js/mail_notify.js": "/js/mail_notify.js",
     "/js/read.js": "/js/read.js",
     "/js/speech.js": "/js/speech.js"
 }
