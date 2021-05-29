@@ -24,16 +24,12 @@
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="{{ route('home') }}">
-                            <img src="{{ asset('bower_components/etrain_template/img/logo.png') }}" 
-                            alt="logo"> 
+                            <img src="{{ asset('bower_components/etrain_template/img/logo.png') }}" alt="logo"> 
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" 
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse main-menu-item justify-content-end" 
-                        id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{ route('home') }}">
@@ -46,9 +42,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" 
-                                    role="button" data-toggle="dropdown" aria-haspopup="true" 
-                                    aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ trans('home.tests') }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -61,18 +55,14 @@
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" 
-                                    role="button" data-toggle="dropdown" aria-haspopup="true" 
-                                    aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ trans('home.vers') }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" 
-                                        href="{{ route('user.change-language', ['vi']) }}">
+                                        <a class="dropdown-item" href="{{ route('user.change-language', ['vi']) }}">
                                             {{ trans('home.vi') }}
                                         </a>
-                                        <a class="dropdown-item" 
-                                        href="{{ route('user.change-language', ['en']) }}">
+                                        <a class="dropdown-item" href="{{ route('user.change-language', ['en']) }}">
                                             {{ trans('home.en') }}
                                         </a>
                                     </div>
@@ -92,26 +82,35 @@
                                     @endif
                                     @else
                                         <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" 
-                                            role="button" data-toggle="dropdown" aria-haspopup="true" 
-                                            aria-expanded="false" v-pre>
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
                                             </a>
-                                            <div class="dropdown-menu dropdown-menu-right" 
-                                            aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" 
-                                                href="{{ route('users.edit', Auth::id()) }}">
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">
                                                     {{ trans('profile.profile') }}
                                                 </a>
                                                 <a class="dropdown-item logout" href="javascript:void(0)">
                                                     {{ trans('auth.logout') }}
                                                 </a>
-                                                <form id="logout-form" action="{{ route('logout') }}" 
-                                                method="POST" class="d-none">
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                     @csrf
                                                 </form>
                                             </div>
                                         </li>
+                                        <li>
+                                            <div class="dropdown1">
+                                                <a class="dropbtn" data-toggle="dropdown">
+                                                    <span class="badge badge-danger ml-2">100</span>
+                                                    <i class="far fa-bell"></i>
+                                                </a>
+                                                <div id="myDropdown" class="dropdown-content">
+                                                    <a href="#home">Homefgfdgndjkgjdhfjkhdjkfhjkdhfjdhfjhsdjkfhjksdhfjksdhjf</a>
+                                                    <a href="#about">About</a>
+                                                    <a href="#contact">Contact</a>
+                                                    <a href="#contact">Contact</a>
+                                                </div>
+                                            </div>
+                                        </li>   
                                 @endguest
                             </ul>
                         </div>
@@ -184,6 +183,7 @@
     <script src="{{ asset('js/logout.js') }}"></script>
     <script src="{{ asset('js/add_input.js') }}"></script>
     <script src="{{ asset('js/speech.js') }}"></script>
+    <script src="{{ asset('js/notification.js') }}"></script>
     @yield('script')
 </body>
 </html>

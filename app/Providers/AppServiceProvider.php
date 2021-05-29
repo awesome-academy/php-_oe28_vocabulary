@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Test\TestRepositoryInterface::class,
             \App\Repositories\Test\TestRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\Notification\NotificationRepositoryInterface::class,
+            \App\Repositories\Notification\NotificationRepository::class
+        );
     }
 
     /**

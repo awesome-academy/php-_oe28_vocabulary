@@ -48,4 +48,5 @@ return [
     'happy_1' => '"NGÃ GỤC Ư, HÌNH NHƯ LÀ HƠI VỘI!"',
     'happy_2' => 'Kien Trung Nguyen',
     'happy_3' => 'Web Developer',
+    'notification' => 'Let\'s review your achievements this week!'
 ];

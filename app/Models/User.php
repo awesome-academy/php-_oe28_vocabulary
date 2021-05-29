@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Word;
 use App\Models\Test;
+use App\Models\Notification;
 
 class User extends Authenticatable
 {
@@ -32,5 +33,10 @@ class User extends Authenticatable
     public function tests()
     {
         return $this->hasMany(Test::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
     }
 }
